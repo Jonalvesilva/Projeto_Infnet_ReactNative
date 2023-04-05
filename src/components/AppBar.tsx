@@ -9,6 +9,9 @@ import {
   Image,
 } from "react-native";
 import { Heading } from "./Heading";
+import screens from "../screens.json";
+import type { ParamListBase } from "@react-navigation/native";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export function AppBar() {
   return (

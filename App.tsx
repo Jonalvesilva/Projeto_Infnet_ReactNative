@@ -1,5 +1,7 @@
+import "react-native-gesture-handler";
+import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Home } from "./src/screens/Home";
 import { NotepadCreate } from "./src/screens/NotepadCreate";
 import { NotepadView } from "./src/screens/NotepadView";
@@ -8,34 +10,34 @@ import { NotepadEdit } from "./src/screens/NotepadEdit";
 import screens from "./src/screens.json";
 import { AppBar } from "./src/components/AppBar";
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={screens.home}>
-        <Stack.Screen
+      <Drawer.Navigator initialRouteName={screens.home}>
+        <Drawer.Screen
           name={screens.home}
           component={Home}
-          options={{ navigationBarColor: "#111827", headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
+          options={{ headerShown: false }}
+        ></Drawer.Screen>
+        <Drawer.Screen
           name={screens.notepadCreate}
           component={NotepadCreate}
-        ></Stack.Screen>
-        <Stack.Screen
+        ></Drawer.Screen>
+        <Drawer.Screen
           name={screens.notepadEdit}
           component={NotepadEdit}
-        ></Stack.Screen>
-        <Stack.Screen
+        ></Drawer.Screen>
+        <Drawer.Screen
           name={screens.notepadList}
           component={NotepadList}
-        ></Stack.Screen>
-        <Stack.Screen
+        ></Drawer.Screen>
+        <Drawer.Screen
           name={screens.notepadView}
           component={NotepadView}
-        ></Stack.Screen>
-      </Stack.Navigator>
+        ></Drawer.Screen>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
