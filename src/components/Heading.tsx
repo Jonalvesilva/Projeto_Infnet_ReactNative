@@ -7,12 +7,12 @@ type HeadingProps = {
 };
 
 const styles = StyleSheet.create({
-  h1: { fontSize: 24 },
-  h2: { fontSize: 22 },
-  h3: { fontSize: 20 },
-  h4: { fontSize: 18 },
-  h5: { fontSize: 16 },
-  h6: { fontSize: 14 },
+  h1: { fontSize: 40, color: "white" },
+  h2: { fontSize: 38, color: "white" },
+  h3: { fontSize: 36, color: "white" },
+  h4: { fontSize: 34, color: "white" },
+  h5: { fontSize: 32, color: "white" },
+  h6: { fontSize: 30, color: "white" },
 });
 
 export function Heading({ title, header }: HeadingProps) {
