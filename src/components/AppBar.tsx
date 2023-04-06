@@ -11,22 +11,17 @@ import {
 import { Heading } from "./Heading";
 import screens from "../screens.json";
 import type { ParamListBase } from "@react-navigation/native";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { DrawerScreenProps } from "@react-navigation/drawer";
 
 export function AppBar() {
   return (
     <View style={styles.appBar}>
+      <Heading title="Jon's Notes" header="h1"></Heading>
       <View>
         <Image
           style={styles.notepadImage}
           source={require("../../assets/notepad.png")}
         ></Image>
-      </View>
-      <View style={styles.viewHeader}>
-        <Heading title="Jon's Notes" header="h1"></Heading>
-      </View>
-      <View style={styles.viewButton}>
-        <Button title="Menu"></Button>
       </View>
     </View>
   );
@@ -36,12 +31,14 @@ const styles = StyleSheet.create({
   appBar: {
     padding: 10,
     flexDirection: "row",
-    gap: 20,
+    gap: 45,
     backgroundColor: "#111827",
+    color: "white",
   },
   notepadImage: {
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
+    marginRight: 20,
   },
   fontTitle: {
     fontFamily: "sans-serif",
@@ -49,9 +46,5 @@ const styles = StyleSheet.create({
   },
   viewHeader: {
     flex: 2,
-  },
-  viewButton: {
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
