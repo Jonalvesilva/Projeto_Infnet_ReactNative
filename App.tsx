@@ -9,6 +9,9 @@ import { NotepadEdit } from "./src/screens/NotepadEdit";
 import screens from "./src/screens.json";
 import { AppBar } from "./src/components/AppBar";
 import * as NavigationBar from "expo-navigation-bar";
+import { MaterialIcons } from "@expo/vector-icons/";
+import { MaterialCommunityIcons } from "@expo/vector-icons/";
+import { FontAwesome } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
 const screenOptionNavigation = {
@@ -35,23 +38,56 @@ export default function App() {
             headerRight: () => <AppBar></AppBar>,
             headerTitle: "",
             headerTitleStyle: { alignItems: "flex-end" },
+            drawerIcon({ color, size }) {
+              return <MaterialIcons color={color} size={size} name="home" />;
+            },
           }}
         ></Drawer.Screen>
         <Drawer.Screen
           name={screens.notepadCreate}
           component={NotepadCreate}
+          options={{
+            drawerIcon({ color, size }) {
+              return (
+                <MaterialIcons color={color} size={size} name="note-add" />
+              );
+            },
+          }}
         ></Drawer.Screen>
         <Drawer.Screen
           name={screens.notepadEdit}
           component={NotepadEdit}
+          options={{
+            drawerIcon({ color, size }) {
+              return (
+                <MaterialCommunityIcons
+                  color={color}
+                  size={size}
+                  name="note-edit"
+                />
+              );
+            },
+          }}
         ></Drawer.Screen>
         <Drawer.Screen
           name={screens.notepadList}
           component={NotepadList}
+          options={{
+            drawerIcon({ color, size }) {
+              return <FontAwesome color={color} size={size} name="list-alt" />;
+            },
+          }}
         ></Drawer.Screen>
         <Drawer.Screen
           name={screens.notepadView}
           component={NotepadView}
+          options={{
+            drawerIcon({ color, size }) {
+              return (
+                <FontAwesome color={color} size={size} name="sticky-note" />
+              );
+            },
+          }}
         ></Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>
