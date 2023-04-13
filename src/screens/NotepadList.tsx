@@ -1,5 +1,5 @@
-import { View, Text, FlatList, Alert } from "react-native";
-import { useEffect, useState } from "react";
+import { View, FlatList } from "react-native";
+import { useEffect, useState, useContext } from "react";
 import type { ParamListBase } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import screens from "../screens.json";
@@ -23,21 +23,23 @@ export function NotepadList({
   }, []);
 
   return (
-    <FlatList
-      data={notepads}
-      keyExtractor={({ id }) => id.toString()}
-      renderItem={({ item }) => {
-        return (
-          <NotepadItem
-            notepad={item}
-            onPress={() => {
-              navigation.navigate(screens.notepadView, {
-                id: item.id,
-              });
-            }}
-          />
-        );
-      }}
-    />
+    <View>
+      <FlatList
+        data={notepads}
+        keyExtractor={({ id }) => id.toString()}
+        renderItem={({ item }) => {
+          return (
+            <NotepadItem
+              notepad={item}
+              onPress={() => {
+                navigation.navigate(screens.notepadView, {
+                  id: item.id,
+                });
+              }}
+            />
+          );
+        }}
+      />
+    </View>
   );
 }
