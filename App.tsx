@@ -17,6 +17,7 @@ import { initialAppStateContext } from "./src/AppStateContext";
 import { useState, useEffect } from "react";
 import { Loader } from "./src/components/Loader";
 import { api } from "./src/api";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 const Drawer = createDrawerNavigator();
 
@@ -54,77 +55,81 @@ export default function App() {
   }, []);
 
   return (
-    <AppStateContext.Provider value={appState}>
-      <Loader loading={appState.loading} />
-      <NavigationContainer>
-        <Drawer.Navigator
-          initialRouteName={screens.home}
-          screenOptions={screenOptionNavigation}
-        >
-          <Drawer.Screen
-            name={screens.home}
-            component={Home}
-            options={{
-              headerRight: () => <AppBar></AppBar>,
-              headerTitle: "",
-              headerTitleStyle: { alignItems: "flex-end" },
-              drawerIcon({ color, size }) {
-                return <MaterialIcons color={color} size={size} name="home" />;
-              },
-            }}
-          ></Drawer.Screen>
-          <Drawer.Screen
-            name={screens.notepadCreate}
-            component={NotepadCreate}
-            options={{
-              drawerIcon({ color, size }) {
-                return (
-                  <MaterialIcons color={color} size={size} name="note-add" />
-                );
-              },
-            }}
-          ></Drawer.Screen>
-          <Drawer.Screen
-            name={screens.notepadEdit}
-            component={NotepadEdit}
-            options={{
-              drawerItemStyle: { display: "none" },
-              drawerIcon({ color, size }) {
-                return (
-                  <MaterialCommunityIcons
-                    color={color}
-                    size={size}
-                    name="note-edit"
-                  />
-                );
-              },
-            }}
-          ></Drawer.Screen>
-          <Drawer.Screen
-            name={screens.notepadList}
-            component={NotepadList}
-            options={{
-              drawerIcon({ color, size }) {
-                return (
-                  <FontAwesome color={color} size={size} name="list-alt" />
-                );
-              },
-            }}
-          ></Drawer.Screen>
-          <Drawer.Screen
-            name={screens.notepadView}
-            component={NotepadView}
-            options={{
-              drawerItemStyle: { display: "none" },
-              drawerIcon({ color, size }) {
-                return (
-                  <FontAwesome color={color} size={size} name="sticky-note" />
-                );
-              },
-            }}
-          ></Drawer.Screen>
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </AppStateContext.Provider>
+    <RootSiblingParent>
+      <AppStateContext.Provider value={appState}>
+        <Loader loading={appState.loading} />
+        <NavigationContainer>
+          <Drawer.Navigator
+            initialRouteName={screens.home}
+            screenOptions={screenOptionNavigation}
+          >
+            <Drawer.Screen
+              name={screens.home}
+              component={Home}
+              options={{
+                headerRight: () => <AppBar></AppBar>,
+                headerTitle: "",
+                headerTitleStyle: { alignItems: "flex-end" },
+                drawerIcon({ color, size }) {
+                  return (
+                    <MaterialIcons color={color} size={size} name="home" />
+                  );
+                },
+              }}
+            ></Drawer.Screen>
+            <Drawer.Screen
+              name={screens.notepadCreate}
+              component={NotepadCreate}
+              options={{
+                drawerIcon({ color, size }) {
+                  return (
+                    <MaterialIcons color={color} size={size} name="note-add" />
+                  );
+                },
+              }}
+            ></Drawer.Screen>
+            <Drawer.Screen
+              name={screens.notepadEdit}
+              component={NotepadEdit}
+              options={{
+                drawerItemStyle: { display: "none" },
+                drawerIcon({ color, size }) {
+                  return (
+                    <MaterialCommunityIcons
+                      color={color}
+                      size={size}
+                      name="note-edit"
+                    />
+                  );
+                },
+              }}
+            ></Drawer.Screen>
+            <Drawer.Screen
+              name={screens.notepadList}
+              component={NotepadList}
+              options={{
+                drawerIcon({ color, size }) {
+                  return (
+                    <FontAwesome color={color} size={size} name="list-alt" />
+                  );
+                },
+              }}
+            ></Drawer.Screen>
+            <Drawer.Screen
+              name={screens.notepadView}
+              component={NotepadView}
+              options={{
+                drawerItemStyle: { display: "none" },
+                drawerIcon({ color, size }) {
+                  return (
+                    <FontAwesome color={color} size={size} name="sticky-note" />
+                  );
+                },
+              }}
+            ></Drawer.Screen>
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </AppStateContext.Provider>
+    </RootSiblingParent>
   );
 }

@@ -4,6 +4,6 @@ export type Notepad = {
   subtitle: string;
   content: string;
   created_at: string;
-  latitude: string;
-  longitude: string;
+  latitude: number | null;
+  longitude: number | null;
 };
